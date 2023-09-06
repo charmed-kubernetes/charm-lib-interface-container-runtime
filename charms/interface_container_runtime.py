@@ -15,5 +15,13 @@ class ContainerRuntimeProvides:
             relation.data[self.unit]["sandbox_image"] = sandbox_image
 
     @property
+    def socket(self):
+        for relation in self.relations:
+            for unit in relation.units:
+                socket = relation.data[unit].get("socket")
+                if socket:
+                    return socket
+
+    @property
     def unit(self):
         return self.charm.unit
