@@ -1,4 +1,4 @@
-from ops import CharmBase, Relations, Unit
+from ops import CharmBase, Relation, Unit
 from typing import List, Optional
 
 
@@ -10,7 +10,7 @@ class ContainerRuntimeProvides:
         self.endpoint = endpoint
 
     @property
-    def relations(self) -> List[Relations]:
+    def relations(self) -> List[Relation]:
         return self.charm.model.relations[self.endpoint]
 
     def set_sandbox_image(self, sandbox_image: str) -> None:
